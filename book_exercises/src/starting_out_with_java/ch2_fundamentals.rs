@@ -4,16 +4,22 @@ use crate::utils::{ print_title, print_w_exercise_indent };
 
 pub fn run() {
   println!("CH 2: FUNDAMENTALS");
-  pc1("EX 1 - Print Variables");
+  // pc1("EX 1 - Print Variables");
   pc2("EX 2 - Display Name");
   pc3("EX 3 - Personal Details");
   pc4("EX 4 - Star Pattern");
-  pc5("EX 5 - Sales Division Contribution");
-  pc6("EX 6 - Sqft to Acres");
-  pc7("EX 7 - Sales Tax");
-  pc8("EX 8 - Cookies Calories");
+  // pc5("EX 5 - Sales Division Contribution");
+  // pc6("EX 6 - Sqft to Acres");
+  // pc7("EX 7 - Sales Tax");
+  // pc8("EX 8 - Cookies Calories");
   // pc9("EX 9 - Miles per Gallon");
   // pc10("EX 10 - Test Average");
+  pc12("EX 12 - String Manipulation");
+  pc14("EX 14 - Male & Female Percentages");
+  // pc15("EX 15 - Stock Commission");
+  // pc16("EX 16 - Energy Drink Consumption");
+  // pc17("EX 17 - Ingredient Adjuster");
+  pc19("EX 19 - Stock Transaction");
 }
 
 // #################################
@@ -150,7 +156,7 @@ fn pc4(title: &str) {
       pattern.push_str("*\n");
     }
 
-    // pattern.push_str(format!("\nCapacity: {}, Size: {}\n", pattern.capacity(), pattern.len()).as_str());
+    pattern.push_str(format!("\nCapacity: {}, Size: {}\n", pattern.capacity(), pattern.len()).as_str());
     
     pattern
   }
@@ -229,8 +235,206 @@ fn pc8(title: &str) {
 
 fn pc9(title: &str) {
   print_title(title);
+
+  let drive_to_vt = CarTravelLog {
+    distance_miles: 241.0,
+    gallons_used: 7.32
+  };
+
+  print_w_exercise_indent(format!("Fuel efficiency={:.2} mpg", drive_to_vt.calc_fuel_efficiency()));
+
+  struct CarTravelLog {
+    distance_miles: f64,
+    gallons_used: f64
+  }
+
+  impl CarTravelLog {
+    fn calc_fuel_efficiency(&self) -> f64 {
+      self.distance_miles as f64 / self.gallons_used as f64
+    }
+  }
 }
 
 fn pc10(title: &str) {
+  print_title(title);
+
+  let scores = [89.3, 74.7, 92.5];
+
+  print_w_exercise_indent(format!("Avg score={}", calc_avg(scores)));
+
+  fn calc_avg(arr: [f64; 3]) -> f64 {
+    let mut sum = 0.0;
+    for num in arr {
+      sum += num;
+    }
+    return sum/arr.len() as f64;
+  }
+}
+
+fn pc12(title: &str) {
+  print_title(title);
+
+  let city = "Tallinn";
+
+  print_w_exercise_indent(format!("{} ({}) {}", city.to_ascii_uppercase(), city.len(), &city[..1]));
+}
+
+fn pc14(title: &str) {
+  print_title(title);
+
+  let class_headcount = 25;
+  let male_count = 14;
+
+  // ♂ ♀
+
+  print_w_exercise_indent(format!("♂={:.0}%, ♀={:.0}%",
+    male_count as f64 / class_headcount as f64 * 100.,
+    (class_headcount as f64 - male_count as f64) / class_headcount as f64 * 100.)
+  );
+}
+
+
+fn pc15(title: &str) {
+  print_title(title);
+
+  let trade = StockTransaction {
+    shares_exchanged: 600,
+    price_per_share: 21.77
+  };
+
+  print_w_exercise_indent(trade.print_receipt());
+
+  struct StockTransaction {
+    shares_exchanged: u32,
+    price_per_share: f64
+  }
+
+  impl StockTransaction {
+    const BROKER_COMMISSION: f64 = 0.02;
+
+    fn calc_commission(&self) -> f64 {
+      return self.shares_exchanged as f64 * self.price_per_share * Self::BROKER_COMMISSION;
+    }
+
+    fn print_receipt(&self) -> String {
+      let mut receipt = String::with_capacity(200);
+
+      receipt.push_str(&format!("{} shares at ${:.2}/share\n", self.shares_exchanged, self.price_per_share));
+      receipt.push_str(&format!("\n{:14} ${:10.2}", "Transaction", self.shares_exchanged as f64 * self.price_per_share));
+      receipt.push_str(&format!("\n{:14} ${:10.2}", "Commission", self.calc_commission()));
+      receipt.push_str(&format!("\n{:->26}", ""));
+      receipt.push_str(&format!("\n{:14} ${:10.2}", "Total", self.shares_exchanged as f64 * self.price_per_share + self.calc_commission()));
+
+      receipt
+    }
+  }
+}
+
+
+fn pc16(title: &str) {
+  print_title(title);
+
+  print_w_exercise_indent(customer_preferences());
+
+  fn customer_preferences() -> String {
+    let customers_count = 12_467;
+    let weekly_purchase_pct = 0.14;
+    let prefer_citrus_pct = 0.64;
+
+    return format!("{:20}{:5.0}\n{:20}{:5.0}\n{:20}{:5.0}",
+      "Total Customers", customers_count,
+      "Weekly Customers", customers_count as f64 * weekly_purchase_pct,
+      "Prefer Citrus", customers_count as f64 * weekly_purchase_pct * prefer_citrus_pct
+    );
+  }
+}
+
+fn pc17(title: &str) {
+  print_title(title);
+
+  print_w_exercise_indent(cookie_ingredients(16));
+
+  fn cookie_ingredients(num_cookies: u32) -> String {
+    let sugar_cups = 1.5;
+    let butter_cups = 1.0;
+    let flour_cups = 2.75;
+    let cookies_made = 48;
+
+    let ratio = num_cookies as f64 / cookies_made as f64;
+
+    let mut recipe = String::with_capacity(200);
+
+    recipe.push_str(&format!("Makes {} cookies", num_cookies));
+    recipe.push_str(&format!("\n{:8} {:4.2} cp", "Flour", flour_cups * ratio));
+    recipe.push_str(&format!("\n{:8} {:4.2} cp", "Butter", butter_cups * ratio));
+    recipe.push_str(&format!("\n{:8} {:4.2} cp", "Sugar", sugar_cups * ratio));
+
+    recipe
+  }
+}
+
+fn pc19(title: &str) {
+  print_title(title);
+
+  print_w_exercise_indent(calc_profit());
+
+  fn calc_profit() -> String {
+    let bought = StockTransaction::new("SP5", 1000, 32.87);
+    let sold = StockTransaction::new("SP5", 1000, 33.92);
+
+    print_w_exercise_indent(bought.print_receipt());
+    print_w_exercise_indent(sold.print_receipt());
+
+    let profit = sold.cost_of_shares - bought.cost_of_shares;
+    let commissions_paid = bought.commission_paid + sold.commission_paid;
+
+    let mut receipt = String::with_capacity(128);
+
+    receipt.push_str(&format!("{:18} ${:10.2}", "Profit from Sale", profit));
+    receipt.push_str(&format!("\n{:18} ${:10.2}", "Net Commission", -commissions_paid));
+    receipt.push_str(&format!("\n{:->30}", ""));
+    receipt.push_str(&format!("\n{:18} ${:10.2}", "Net Profit", profit - commissions_paid));
+
+    receipt
+  }
+  
+
+  struct StockTransaction {
+    symbol: &'static str,
+    shares_exchanged: u32,
+    price_per_share: f64,
+    cost_of_shares: f64,
+    commission_paid: f64
+  }
+
+  impl StockTransaction {
+    const BROKER_COMMISSION: f64 = 0.02;
+
+    fn new(symbol: &'static str, shares_exchanged: u32, price_per_share: f64) -> Self {
+      Self {
+        symbol,
+        shares_exchanged,
+        price_per_share,
+        cost_of_shares: shares_exchanged as f64 * price_per_share,
+        commission_paid: shares_exchanged as f64 * price_per_share * Self::BROKER_COMMISSION
+      }
+    }
+
+    fn print_receipt(&self) -> String {
+      let mut receipt = String::with_capacity(200);
+
+      receipt.push_str(&format!("({}) {} shares at ${:.2}/share\n", self.symbol, self.shares_exchanged, self.price_per_share));
+      receipt.push_str(&format!("\n{:14} ${:10.2}", "Transaction", self.shares_exchanged as f64 * self.price_per_share));
+      receipt.push_str(&format!("\n{:14} ${:10.2}", "Commission", self.commission_paid));
+      receipt.push_str(&format!("\n{:->26}", ""));
+      receipt.push_str(&format!("\n{:14} ${:10.2}\n", "Total", self.shares_exchanged as f64 * self.price_per_share + self.commission_paid));
+
+      receipt
+    }
+  }
+}
+
+#[allow(non_snake_case)]
+fn pcXX(title: &str) {
   print_title(title);
 }
