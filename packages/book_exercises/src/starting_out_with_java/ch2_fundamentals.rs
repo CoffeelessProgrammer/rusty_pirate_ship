@@ -1,6 +1,6 @@
 use std::fmt;
 
-use crate::utils::{ print_title, print_w_exercise_indent };
+use exercise_utils::{ print_title, print_w_exercise_indent };
 
 pub fn run() {
   println!("CH 2: FUNDAMENTALS");
@@ -29,7 +29,7 @@ pub fn run() {
 fn pc1(title: &str) {
   print_title(title);
 
-  let name: &'static str = "Neal Caffrey";
+  let name: &str = "Neal Caffrey";
   let age: u8 = 46;
   let monthly_salary: f64 = 1_600.0;
 
@@ -57,13 +57,13 @@ fn pc2(title: &str) {
     }
   }
 
-  struct FullName {
-    first: &'static str,
-    middle: &'static str,
-    last: &'static str
+  struct FullName<'a> {
+    first: &'a str,
+    middle: &'a str,
+    last: &'a str
   }
 
-  impl fmt::Display for FullName {
+  impl fmt::Display for FullName<'_> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "First: {}\nMiddle: {}\nLast: {}", self.first, self.middle, self.last)
     }
@@ -85,18 +85,26 @@ fn pc3(title: &str) {
 
   print_w_exercise_indent(format!("{}", sherlock));
 
-  struct PersonalDetails {
-    name: &'static str,
-    address: &'static str,
-    city: &'static str,
-    state: &'static str,
-    zip: &'static str,
-    telephone_number: &'static str,
-    college_major: &'static str
+  struct PersonalDetails<'a> {
+    name: &'a str,
+    address: &'a str,
+    city: &'a str,
+    state: &'a str,
+    zip: &'a str,
+    telephone_number: &'a str,
+    college_major: &'a str
   }
 
-  impl PersonalDetails {
-    fn new(name: &'static str, address: &'static str, city: &'static str, state: &'static str, zip: &'static str, telephone_number: &'static str, college_major: &'static str) -> Self {
+  impl<'a> PersonalDetails<'a> {
+    fn new(
+      name: &'a str,
+      address: &'a str,
+      city: &'a str,
+      state: &'a str,
+      zip: &'a str,
+      telephone_number: &'a str,
+      college_major: &'a str
+    ) -> Self {
       Self {
         name,
         address,
@@ -110,7 +118,7 @@ fn pc3(title: &str) {
       
   }
 
-  impl fmt::Display for PersonalDetails {
+  impl fmt::Display for PersonalDetails<'_> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{}\n{}\n{}, {} {}\n{}\n{}",
           self.name,
@@ -399,18 +407,18 @@ fn pc19(title: &str) {
   }
   
 
-  struct StockTransaction {
-    symbol: &'static str,
+  struct StockTransaction<'a> {
+    symbol: &'a str,
     shares_exchanged: u32,
     price_per_share: f64,
     cost_of_shares: f64,
     commission_paid: f64
   }
 
-  impl StockTransaction {
+  impl<'a> StockTransaction<'a> {
     const BROKER_COMMISSION: f64 = 0.02;
 
-    fn new(symbol: &'static str, shares_exchanged: u32, price_per_share: f64) -> Self {
+    fn new(symbol: &'a str, shares_exchanged: u32, price_per_share: f64) -> Self {
       Self {
         symbol,
         shares_exchanged,
@@ -432,9 +440,4 @@ fn pc19(title: &str) {
       receipt
     }
   }
-}
-
-#[allow(non_snake_case)]
-fn pcXX(title: &str) {
-  print_title(title);
 }

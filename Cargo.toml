@@ -1,7 +1,8 @@
 [workspace]
+members = ["packages/*"]
 resolver = "2"
 
-members = [
-  "playground",
-  "book_exercises"
-]
+[workspace.package]
+edition = "2021"
+rust-version = "1.74"
+authors = ["CoffeelessProgrammer <coffeelessprogrammer@outlook.com>"]
