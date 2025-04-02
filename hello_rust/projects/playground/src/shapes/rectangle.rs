@@ -5,6 +5,7 @@ pub struct Rectangle {
   height: u32
 }
 
+#[allow(dead_code)]
 impl Rectangle {
   pub fn new(width: u32, height: u32) -> Rectangle {
       Self {

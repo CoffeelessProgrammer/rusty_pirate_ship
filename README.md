@@ -5,14 +5,15 @@
 ### Environment
 - Rust v1.85.1
 
-## Built-Ins
+## Commands —
+- `rustup [update | self uninstall]`
+- `rustup docs` – `file:///C:/Users/<user>>/.rustup/toolchains/stable-x86_64-pc-windows-msvc/share/doc/rust/html/`
 
-
-## Resources
+## Resources —
 - [Learn Rust | Rust-lang.org](https://www.rust-lang.org/learn)
 - [100 Exercises | MainMatter](https://rust-exercises.com/100-exercises/)
 
-## Repos
+## Repos —
 - [PowerShellHoverNet | CyberMantaRay](https://github.com/CyberMantaRay/PowerShellHoverNet)
 - [PythonRopeSwing | CyberMantaRay](https://github.com/CyberMantaRay/PythonRopeSwing/)
 - [leetcode_rust | CoffeelessProgrammer](https://github.com/CoffeelessProgrammer/leetcode_rust)
