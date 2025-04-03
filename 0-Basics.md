@@ -2,7 +2,7 @@
 **Explore:** [Home](/README.md) [Testing](/0-Testing.md)
 
 ## Cheatsheet —
-- std::fmt
+- std::fmt – [[[fill]align][sign]['#']['0'][width]['.' precision]type](https://doc.rust-lang.org/std/fmt/index.html#syntax)
     - format!() ∙∙∙∙∙∙∙ print!() ∙∙∙∙∙∙∙ eprint!()
     - `{}` fmt::Display ∙∙∙∙∙∙∙ `{:?}` `{:#?}` fmt::Debug
     - `{:b}` binary ∙∙∙∙∙∙∙ `{:o}` octal ∙∙∙∙∙∙∙ `{:x}` hex
