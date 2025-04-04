@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 
-use std::fmt;                       // 'use' is 100% optional, fully qual. name can be used each time instead
+use std::fmt;
+// 'use' is 100% optional, fully qual. name can be used each time instead
 
 /* ----------------------------------
  * -------      EXECUTE       -------
@@ -12,6 +13,7 @@ pub fn run() {
     // debug_trait();
     // display_trait();
     // display_list();
+    loops();
 }
 
 // ############################
@@ -136,9 +138,9 @@ fn display_list() {
 }
 
 
-// ############################
-// ###      DATA TYPES      ###
-// ############################
+// #########################
+// ###      STRINGS      ###
+// #########################
 
 
 // ############################
@@ -146,6 +148,26 @@ fn display_list() {
 // ############################
 
 
-// ##########################
-// ###      TEMPLATE      ###
-// ##########################
+// ############################
+// ###     FLOW CONTROL     ###
+// ############################
+
+fn loops() {
+    let numbers = [42, 2, 20, 4, 5];
+
+    for num in numbers.iter() {
+        print!("{} ", num)
+    }
+
+    let sentence = "The quick brown fox.";
+    let mut itr = sentence.split(' ').peekable();
+
+    while let Some(token) = itr.next() {
+        print!("{} ", token);
+        if itr.peek().is_none() {
+            println!();
+        }
+    }
+
+    // See user_input.rs for infinite 'loop' example, 'break' to exit
+}
