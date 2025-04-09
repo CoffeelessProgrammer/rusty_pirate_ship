@@ -1,7 +1,7 @@
 #![allow(dead_code)]
 
-use std::fmt;
-// 'use' is 100% optional, fully qual. name can be used each time instead
+use std::fmt;                       // 'use' is 100% optional, fully qual. name can be used each time instead
+use std::cmp::Ordering;
 
 /* ----------------------------------
  * -------      EXECUTE       -------
@@ -13,7 +13,7 @@ pub fn run() {
     // debug_trait();
     // display_trait();
     // display_list();
-    loops();
+    // comparing_values();
 }
 
 // ############################
@@ -130,13 +130,30 @@ fn display_list() {
     }
 
     let v = List(vec![
-        Pokemon { name: String::from("Chikorita"), level: 15}, 
-        Pokemon { name: String::from("Totodile"), level: 11},
-        Pokemon { name: String::from("Cyndaquil"), level: 12}
+        Pokemon { name: String::from("Chikorita"), level: 15 }, 
+        Pokemon { name: String::from("Totodile"), level: 11 },
+        Pokemon { name: String::from("Cyndaquil"), level: 12 }
     ]);
     println!("{}", v);
 }
 
+
+// ############################
+// ###      DATA TYPES      ###
+// ############################
+
+fn comparing_values() {
+    let val: u8 = 18; 
+    let target = 42;
+
+    match val.cmp(&target) {
+        Ordering::Less => println!("Too small O_O"),
+        Ordering::Greater => println!("Too big ._."),
+        Ordering::Equal => {
+            println!("Match!");
+        }
+    }
+}
 
 // #########################
 // ###      STRINGS      ###
