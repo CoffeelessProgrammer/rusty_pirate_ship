@@ -6,8 +6,7 @@
 - Bevy v0.16
 
 ## Commands —
-- `cargo add bevy`
-- `cargo run --features bevy/dynamic_linking`
+- `cargo add bevy -F dynamic_linking`
 
 ## Resources —
 - [Learn Bevy | bevyengine.org](https://bevyengine.org/learn/)

@@ -30,7 +30,7 @@ fn basics() {
     println!("0b{number:<8b}", number=11);                          // Left-justify (<) by pointing arrow left
     println!("--{number:^12b}--", number=11);                       // Center-align (^), if uneven, more padding on right
     println!("0b{number:0>8b}", number=42);                         // Syntax: {arg:fill direction width fmt_char}
-    println!("0x{number:f>width$x}", number=75, width=4);           // Named args in format specifier by appending `$`.
+    println!("0x{number:f>width$x}", number=75, width=4);           // Named args in format specifier by postfixing `$`.
 }
 
 fn debug_trait() {
@@ -63,7 +63,7 @@ fn display_trait() {
     struct Vector2D(i64, i64);
 
     impl fmt::Display for Vector2D {
-        fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {           
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {           
             write!(f, "({}, {})", self.0, self.1)                   // Use `self.number` to refer to each positional data point
         }
     }
@@ -92,7 +92,7 @@ fn display_trait() {
     struct Point2D{x: f64, y: f64}
 
     impl fmt::Display for Point2D {
-        fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {            
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {            
             write!(f, "x: {}, y: {}", self.x, self.y)               // Referencing named fields
         }
     }
@@ -115,14 +115,14 @@ fn display_list() {
     struct List(Vec<Pokemon>);
 
     impl fmt::Display for List {
-        fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
             let vec = &self.0;
     
             write!(f, "[")?;
 
-            for (count, v) in vec.iter().enumerate() {
-                if count != 0 { write!(f, ", ")?; }
-                write!(f, "\n    {count}. {}", v)?;
+            for (i, ele) in vec.iter().enumerate() {
+                if i != 0 { write!(f, ", ")?; }
+                write!(f, "\n\t{i}: {}", ele)?;
             }
 
             write!(f, "\n]")

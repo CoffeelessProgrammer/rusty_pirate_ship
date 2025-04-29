@@ -3,11 +3,12 @@
 
 ## Toolbox —
 - <span title="automatically imported into every Rust program">Rust Prelude</span>
-    - std::fmt – [[[fill]align][sign]['#']['0'][width]['.' precision]type](https://doc.rust-lang.org/std/fmt/index.html#syntax)
-        - format!() ∙∙∙∙∙∙∙ print!() ∙∙∙∙∙∙∙ eprint!()
+    - `std::fmt` – [[[fill]align][sign]['#']['0'][width]['.' precision]type](https://doc.rust-lang.org/std/fmt/index.html#syntax)
+        - format!() ∙∙∙∙∙∙∙ print!() ∙∙∙∙∙∙∙ eprint!() ∙∙∙∙∙∙∙ write!()
         - `{}` fmt::Display ∙∙∙∙∙∙∙ `{:?}` `{:#?}` fmt::Debug
         - `{:b}` binary ∙∙∙∙∙∙∙ `{:o}` octal ∙∙∙∙∙∙∙ `{:x}` hex
-- Result<Ok(T), Err(_)>.expect() ∙∙∙∙∙∙∙ 
+        - `fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {...}`
+- Result<Ok(T), Err(_)>.expect()
 
 ## Cargo Cheatsheet —
 - `cargo new <project_name> --lib`
