@@ -12,7 +12,7 @@
 ## Cargo Cheatsheet —
 - `cargo new <project_name> --lib`
 - `cargo doc --open`
-- `cargo [check | run | build --release]>`
+- `cargo [check | run | build --release]`
 - <span title="For patching dependencies; minor/major versions must be manually updated">`cargo update`</span>
 
 ### Cargo.toml —
