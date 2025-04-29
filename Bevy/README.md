@@ -1,6 +1,6 @@
 # Bevy Game Engine
 
-**Explore:** [Rust Home](/README.md) [Testing](/0-Testing.md)
+**Explore:** [Basics](/Bevy/0-Basics.md) [Testing](/0-Testing.md) [← Rust](/README.md)
 
 ### Environment —
 - Bevy v0.16
