@@ -11,3 +11,4 @@
 
 ## Resources —
 - [Learn Bevy | bevyengine.org](https://bevyengine.org/learn/)
+- [Assets | bevyengine.org](https://bevyengine.org/assets/)

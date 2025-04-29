@@ -5,12 +5,15 @@
 ## Toolbox —
 - world ∙∙∙∙∙∙∙ schedule ∙∙∙∙∙∙∙ runner
 
-## main.rs
+## main.rs  —
 ```rust
 use bevy::prelude::*;
 
 fn main() {
-    App::new().run();
+    App::new()
+        .add_plugins()
+        .add_systems()
+        .run();
 }
 ```
 
@@ -27,5 +30,5 @@ opt-level = 1
 opt-level = 3
 ```
 
-## Resources
+## Resources  —
 - [Bevy ECS Intro](https://bevyengine.org/learn/quick-start/getting-started/ecs/)
