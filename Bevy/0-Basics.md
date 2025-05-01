@@ -1,6 +1,6 @@
 # Bevy Fundamentals
 
-**Explore:** [Home](/Bevy/README.md)
+**Explore:** [Home](/Bevy/README.md) [Plugins](/Bevy/0-Plugins.md)
 
 ## Toolbox —
 - world ∙∙∙∙∙∙∙ schedule ∙∙∙∙∙∙∙ runner
