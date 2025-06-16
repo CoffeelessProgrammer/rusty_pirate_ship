@@ -8,7 +8,8 @@
         - `{}` fmt::Display ∙∙∙∙∙∙∙ `{:?}` `{:#?}` fmt::Debug
         - `{:b}` binary ∙∙∙∙∙∙∙ `{:o}` octal ∙∙∙∙∙∙∙ `{:x}` hex
         - `fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {...}`
-- Result<Ok(T), Err(_)>.expect()
+    - Result<Ok(T), Err(_)>.expect()
+    - Option<>
 
 ## Cargo Cheatsheet —
 - `cargo new <project_name> --lib`
@@ -19,7 +20,7 @@
 ### Cargo.toml —
 ```toml
 [workspace]
-resolver = "2"
+resolver = "3"
 members = ["projects/*"]
 # ...............................
 [dependencies]      # Uses SemVer; 0.4.2 shorthand for ^0.4.2, i.e. [0.4.2, 0.5.0)

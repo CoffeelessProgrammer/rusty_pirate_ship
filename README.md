@@ -7,7 +7,7 @@
 
 ## Commands —
 - `rustup [update | self uninstall]`
-- `rustup docs` – `file:///C:/Users/<user>>/.rustup/toolchains/stable-x86_64-pc-windows-msvc/share/doc/rust/html/`
+- `rustup docs` – `file:///C:/Users/<user>/.rustup/toolchains/stable-x86_64-pc-windows-msvc/share/doc/rust/html/`
 
 ## Resources —
 - [Learn Rust | Rust-lang.org](https://www.rust-lang.org/learn)

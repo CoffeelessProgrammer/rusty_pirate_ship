@@ -1,8 +1,8 @@
 [workspace]
-resolver = "2"
+resolver = "3"
 members = ["projects/*"]
 
 [workspace.package]
 edition = "2024"
-rust-version = "1.85"
+rust-version = "1.87"
 authors = ["CoffeelessProgrammer"]
