@@ -8,8 +8,8 @@ use std::io::{self, Write};
  */
 
 pub fn run() {
-    // basics();
-    // cast_input_as_u8();
+    basics();
+    cast_input_as_u8();
 }
 
 // ##########################

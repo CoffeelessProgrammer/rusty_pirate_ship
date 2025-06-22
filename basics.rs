@@ -9,13 +9,12 @@ use std::cmp::Ordering;
  */
 
 pub fn run() {
-    // basics();
-    // debug_trait();
-    // display_trait();
-    // display_list();
-    // primitives();
-    // comparing_values();
-    // loops();
+    basics();
+    debug_trait();
+    display_trait();
+    display_list();
+    primitives();
+    comparing_values();
 }
 
 // ############################
@@ -162,7 +161,7 @@ fn primitives() {
     type Point = (f64, f64);    // Type alias for tuple
 
     const PI: f64 = 3.141592;                   // Consts substituted in-line at compile time
-    static NAME: &str = "Rusty Pirate Ship";    // Statics stored in memory (single loc)
+    static NAME: &str = "Rusty Pirate Ship";    // Statics stored in heap memory (single loc)
 }
 
 fn comparing_values() {
@@ -176,70 +175,4 @@ fn comparing_values() {
             println!("Match!");
         }
     }
-}
-
-// #########################
-// ###      STRINGS      ###
-// #########################
-
-
-// ############################
-// ###      CONTAINERS      ###
-// ############################
-
-
-// ############################
-// ###     FLOW CONTROL     ###
-// ############################
-
-fn conditionals() {
-    let battery: u8 = 42;
-    
-    if battery > 42 {
-        // Battery high
-    } else if battery > 16 {
-        // Battery low
-    } else {
-        // Battery critical
-    }
-
-    let count: u8 = 16;
-    let label: &'static str = if count == 1 { "donut" } else { "donuts" };      // if-else blocks return val in Rust
-    println!("Inventory: {} {}", count, label);
-}
-
-fn loops() {
-    let numbers = [42, 2, 20, 4, 5];
-
-    for num in numbers {
-        print!("{} ", num)
-    }
-
-    let sentence = "The quick brown fox.";
-    let mut itr = sentence.split(' ').peekable();
-
-    while let Some(token) = itr.next() {
-        print!("{} ", token);
-        if itr.peek().is_none() {
-            println!();
-        }
-    }
-
-    let grid = vec![
-        vec![0, 0, 0, 0, 0],
-        vec![0, 0, 0, 1, 0],
-        vec![1, 0, 0, 0, 0],
-    ];
-
-    'outer: for row in 0..grid.len() {              // Loop labeling
-        for col in 0..grid[row].len() {
-            if grid[row][col] == 1 {
-                println!("Found a 1 at ({}, {})", row, col);
-                break 'outer;
-            }
-        }
-    }
-
-    // 'loop' can return a value w/ break
-    // See user_input.rs for infinite 'loop' example
 }

@@ -39,3 +39,13 @@ utils = { path = "../utils" }
 - Windows Def. Install Path: `C:\Users\<user> → ~\.rustup & ~\.cargo`
 - [Install | Rust-lang.org](https://www.rust-lang.org/tools/install)
 - [Downloads | VS Code](https://code.visualstudio.com/download)
+- In VSCode workspace, add `.vscode/settings.json` and list Cargo.toml's (for rust-analyzer extension)
+    - ```json
+      {
+          "rust-analyzer.linkedProjects": [
+              ".\\hello-rust\\Cargo.toml",
+              ".\\ratatui\\counter-app\\Cargo.toml",
+              ".\\ratatui\\json-editor\\Cargo.toml"
+          ]
+      }
+      ```

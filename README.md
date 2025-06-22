@@ -3,7 +3,7 @@
 **Explore:** [Basics](/0-Basics.md) [Testing](/0-Testing.md) [Crates](/Crates.md)
 
 ### Environment
-- Rust v1.85.1
+- Rust v1.87.0
 
 ## Commands —
 - `rustup [update | self uninstall]`
