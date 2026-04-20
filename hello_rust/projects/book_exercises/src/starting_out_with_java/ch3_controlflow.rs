@@ -41,7 +41,7 @@ fn pc1(title: &str) {
 
   fn convert_to_roman_numeral(mut num: u32) -> String {
     // I, V, X, L, C, D, M
-    if num == 0 { return "nulla".to_string() }
+    if num == 0 { return "null".to_string() }
 
     let mut roman = String::with_capacity(16);
     let lookup = [

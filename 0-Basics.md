@@ -37,6 +37,12 @@ utils = { path = "../utils" }
 
 ## Env Setup —
 - Windows Def. Install Path: `C:\Users\<user> → ~\.rustup & ~\.cargo`
+- Custom Cargo commands → `~\.cargo\config.toml`
+    - ```toml
+      [alias]
+      # Custom alias 'cargo test-verbose' to run tests with non-captured output
+      test-verbose = "test -- --nocapture"
+      ```
 - [Install | Rust-lang.org](https://www.rust-lang.org/tools/install)
 - [Downloads | VS Code](https://code.visualstudio.com/download)
 - In VSCode workspace, add `.vscode/settings.json` and list Cargo.toml's (for rust-analyzer extension)

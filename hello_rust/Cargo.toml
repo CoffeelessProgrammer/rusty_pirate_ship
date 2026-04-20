@@ -4,5 +4,5 @@ members = ["projects/*"]
 
 [workspace.package]
 edition = "2024"
-rust-version = "1.87"
+rust-version = "1.94"
 authors = ["CoffeelessProgrammer"]
